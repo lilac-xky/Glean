@@ -1,0 +1,8 @@
+# 测试专用配置：使用内存数据库 H2，使 CI 无需外部 MySQL / Docker 即可启动 Spring 上下文。
+# 由 BackendApplicationTests 上的 @ActiveProfiles("test") 激活。
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:glean;MODE=MySQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: ""
