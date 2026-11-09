@@ -31,5 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
 backend/src/main/resources/application-dev.yml
 AGENT.md
+frontend/.env.development
