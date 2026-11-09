@@ -32,7 +32,7 @@ build/
 ### VS Code ###
 .vscode/
 
-
+.agents
 backend/src/main/resources/application-dev.yml
 AGENT.md
 frontend/.env.development
