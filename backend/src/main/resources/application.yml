@@ -14,3 +14,10 @@ mybatis-flex:
   configuration:
     map-underscore-to-camel-case: false
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# 鉴权配置
+glean:
+  auth:
+    jwt-secret: ${AUTH_JWT_SECRET:}
+    token-expire-seconds: 7200
+    issuer: glean
