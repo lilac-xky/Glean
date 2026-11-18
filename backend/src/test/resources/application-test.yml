@@ -1,8 +1,19 @@
-# 测试专用配置：使用内存数据库 H2，使 CI 无需外部 MySQL / Docker 即可启动 Spring 上下文。
-# 由 BackendApplicationTests 上的 @ActiveProfiles("test") 激活。
+# 测试专用配置：H2 内存库，CI 无需外部 MySQL / Docker。
 spring:
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:glean;MODE=MySQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: sa
     password: ""
+  # 启动时自动建表，脚本用 H2 兼容写法
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db/schema-h2.sql
+
+# AuthProperties 上的 @NotBlank 要求必须有值，测试环境也要给一个够长的假密钥。
+# 这只是测试用，不进生产。
+glean:
+  auth:
+    jwt-secret: test-only-secret-at-least-32-bytes-long!!
+    token-expire-seconds: 7200
